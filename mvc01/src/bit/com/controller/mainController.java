@@ -10,13 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class mainController
  */
-@WebServlet("/main.do")
+@WebServlet("/ex02.do")
 public class mainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		
+		request.setAttribute("msg", "hello el2");
+		request.getRequestDispatcher("el/ex02.jsp").forward(request, response);
 	}
 
 }
