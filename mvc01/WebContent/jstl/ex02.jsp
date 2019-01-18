@@ -47,5 +47,9 @@
 	<c:forEach var ="msg" items = "${alist }">
 	<p>${msg.key} : ${msg.value }</p>
 	</c:forEach>
+	
+	<c:forEach var="msg" items="${alist }" varStatus="status">
+		<p>${status.index} - ${msg }</p>
+	</c:forEach>
 </body>
 </html>

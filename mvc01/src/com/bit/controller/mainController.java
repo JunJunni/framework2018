@@ -1,4 +1,4 @@
-package bit.com.controller;
+package com.bit.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
