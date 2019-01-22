@@ -33,6 +33,7 @@
 				<div class="page-header">
 					<h1>Write<small>xxx게시판</small></h1>
 				</div><!--end page-header -->
+				
 				<!-- form start -->
 		<form action = "insert.do">
 			<div class="form-group">
@@ -46,10 +47,20 @@
 					placeholder="Please insert the content"></textarea>
 			</div>
 			<button type="submit" class="btn btn-primary">write</button>
-			<button type="submit" class= "btn btn-default">cancel</button>
+			<button type="reset" class= "btn btn-default">cancel</button>
 		</form>
 			</div><!-- end col-md-12 -->
 		</div><!-- end row -->
 	</div><!-- end div container -->
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+

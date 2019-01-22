@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import com.bit.model.entity.BbsVo;
 
 public class BbsDao {
+	//url - protocol//[hosts][/database][?properties]
+		//		jdbc:mysql://localhost:3306/my?useUnicode=true&amp;characterEncoding=utf8
 	String url = "jdbc:mysql://localhost:3306/my?useUnicode=true&amp;characterEncoding=utf=8";
 	String user = "class01";
 	String password = "1234";
@@ -48,7 +50,7 @@ public class BbsDao {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select * from bbs");
+			pstmt = conn.prepareStatement("select * from bbs order by num desc");
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				list.add(new BbsVo(rs.getInt("num"), rs.getString("sub"), rs
