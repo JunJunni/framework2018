@@ -1,0 +1,56 @@
+#header {
+	background-color: #282828;
+	color: white;
+	height: 20px;
+	font-size: 14px;
+	padding: 5px 300px;
+}
+
+#btnLogin {
+	background: none;
+	border: none;
+	color: #A0A0A0;
+	width: 40px;
+}
+
+#header, #btnLogin {
+	text-align: right;
+}
+
+#menu {
+	background-color: #505050;
+	height: 60px;
+	text-align: right;
+}
+
+div>ul {
+	text-align: center;
+	margin: 0px auto;
+	display: table;
+	margin-left: auto;
+	margin-right: 300px;
+}
+
+div>ul>li {
+	display: inline-block;
+	list-style-type: none;
+	float: left;
+}
+
+div>ul>li>a {
+	display: block;
+	text-decoration: none;
+	height: 40px;
+	text-align: center;
+	color: white;
+	width: 100px;
+	padding: 17px 0px 0px 0px;
+}
+
+div>ul>li>a:hover {
+	color: #FFC828;
+}
+
+#content, #footer {
+	clear: both;
+}
