@@ -1,0 +1,45 @@
+div>table {
+	margin: 30px auto;
+	 border-bottom: 1px solid #bcbcbc;
+}
+
+td, th {
+	width: 140px;
+	height: 35px;
+	text-align: center;
+}
+
+td {
+	color: #FFC828;
+	font-weight: bold;
+}
+
+
+.charts {
+	width: 1050px;
+	margin: auto;
+}
+#orderCount,#popularItem{
+	float: left;
+	margin-right:15px;
+	margin-left:15px;
+	
+}
+
+#ordercontainer,#popularcontainer,#goalcontainer{
+	display : inline-block;
+	float : left;
+	text-align: center;
+}
+#sales{
+	margin-left : 430px;
+	margin-right : 50px;
+}
+
+#Monthlysales{
+	text-align: center;
+	padding-top : 80px;
+}
+.salescontainer, #Monthlysales{
+	clear:both;
+}

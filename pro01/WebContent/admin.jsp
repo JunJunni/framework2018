@@ -4,31 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>통합관리자 : 메인</title>
+<title>통합관리자 | 메인</title>
 <style>
-div>table {
-	margin: 30px auto;
-}
-
-td, th {
-	width: 100px;
-	height: 25px;
-	text-align: center;
-}
-
-td {
-	color: #FFC828;
-	font-weight: bold;
-}
-
-.charts {
-	width: 1050px;
-	margin: auto;
-}
 </style>
 <link rel="stylesheet" href="css/frame.css" type="text/css">
+<link rel="stylesheet" href="css/admin.css" type="text/css">
+<link rel="stylesheet" href="css/progresscircle.css">
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/progresscircle.js"></script>
+
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script type="text/javascript">
@@ -43,7 +28,7 @@ td {
 	<div id="menu">
 		<ul>
 			<li><a href="admin.jsp">관리홈</a></li>
-			<li><a href="#">매출관리</a></li>
+			<li><a href="test.jsp">매출관리</a></li>
 			<li><a href="#">주문관리</a></li>
 			<li><a href="#">회원관리</a></li>
 			<li><a href="#">통계</a></li>
@@ -82,6 +67,7 @@ td {
 		</table>
 	</div>
 	<div class="charts">
+		<!-- 주문건수 차트 -->
 		<div id="ordercontainer">
 			<h6>주문건수</h6>
 			<canvas id="orderCount" width="320" height="240"></canvas>
@@ -95,12 +81,16 @@ td {
 						datasets : [ {
 
 							data : [ 3, 5, 10, 3 ],
-							backgroundColor : [ 'rgba(189,192,197)',
-									'rgba(189,192,197)', 'rgba(91, 100, 113)',
-									'rgba(189,192,197)' ],
+							backgroundColor : [ 'rgba(189,192,197,1.0)',
+									'rgba(189,192,197,1.0)',
+									'rgba(91, 100, 113,1.0)',
+									'rgba(189,192,197,1.0)' ],
 						} ]
 					},
 					options : {
+						legend : {
+							display : false
+						},
 						responsive : false,
 						scales : {
 							xAxes : [ {
@@ -112,16 +102,19 @@ td {
 
 							} ]
 						}
-					}
+					},
+
 				});
 			</script>
 		</div>
-		<div>
+		<!-- 주문건수 차트 끝-->
+		<div id="popularcontainer">
+			<!-- 인기상품 차트 -->
 			<h6>인기상품 Top5</h6>
-			<canvas id="popularItem" width="320" height="240"></canvas>
+			<canvas id="popularItem" width="360" height="240"></canvas>
 			<script>
-				var ctx = document.getElementById("popularItem")
-						.getContext("2d");
+				var ctx = document.getElementById("popularItem").getContext(
+						"2d");
 				var myChart = new Chart(ctx, {
 					type : 'pie',
 					data : {
@@ -136,17 +129,102 @@ td {
 									'rgba(153, 102, 255, 0.2)', ],
 						} ]
 					},
-
 					options : {
-						responsive : false,
-			
+						legend : {
+							position : 'bottom'
+						},
+						responsive : false
 					}
 				});
 			</script>
 		</div>
+		<!-- 인기상품 차트 끝-->
+		<!-- 월 목표 달성율 차트 -->
+		<div id="goalcontainer">
+			<h6>월 목표 달성율</h6>
+
+			<div class="circlechart" data-percentage="1">
+				<!-- 프로그레스 바를 이용해보자  -->
+				<script type="text/javascript">
+					$(function() {
+						$('.circlechart').circlechart();
+					});
+				</script>
+			</div>
+		</div>
+		<!-- 월 목표 달성율 차트 끝 -->
 	</div>
-	<!-- end div class charts  -->
-	<div>차트 들어가야함</div>
+	<div class="salescontainer">
+		<h4 id="Monthlysales">월 매출</h4>
+		<canvas id="sales" width="1050" height="500"></canvas>
+		<script>
+			var ctx = document.getElementById("sales").getContext("2d");
+			var myChart = new Chart(
+					ctx,
+					{
+						type : 'bar',
+						data : {
+							labels : [ "Jan", "Feb", "Mar", "Apr", "May",
+									"Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
+									"Dec" ],
+							datasets : [
+									{
+										label : "매출액",
+										data : [ 500, 23, 8, 33, 19, 0, 0, 0,
+												0, 0, 0, 0 ],
+										backgroundColor : [
+												'rgba(255,120,0,0.2)',
+												'rgba(255,120,0,0.2)',
+												'rgba(255,120,0,0.2)',
+												'rgba(255,120,0,0.2)',
+												'rgba(255,120,0,0.2)',
+												'rgba(255,120,0,0.2)',
+												'rgba(255,120,0,0.2)',
+												'rgba(255,120,0,0.2)',
+												'rgba(255,120,0,0.2)',
+												'rgba(255,120,0,0.2)',
+												'rgba(255,120,0,0.2)',
+												'rgba(255,120,0,0.2)' ],
+										borderColor : [ 'rgba(255,120,0,1)',
+												'rgba(255,120,0,1)',
+												'rgba(255,120,0,1)',
+												'rgba(255,120,0,1)',
+												'rgba(255,120,0,1)',
+												'rgba(255,120,0,1)',
+												'rgba(255,120,0,1)',
+												'rgba(255,120,0,1)',
+												'rgba(255,120,0,1)' ],
+										borderWidth : 1
+									},
+									{
+										label : "평균",
+										type : "line",
+										borderColor : [ 'rgba(189,192,197,1)' ],
+										data : [ 0, 2, 8, 33, 190, 0, 0, 0, 0,
+												0, 0, 0 ],
+										fill : false
+									},
+									{
+										label : "매출",
+										type : "line",
+										borderColor : "#FFC828",
+										data : [ 0, 2, 8, 330, 19, 0, 0, 0, 0,
+												0, 0, 0 ],
+										fill : false
+									} ]
+						},
+
+						options : {
+							legend : {
+								display : true
+							},
+							responsive : false,
+						}
+					});
+		</script>
+	</div>
+
+
 	<div id="footer">footer</div>
 </body>
 </html>
